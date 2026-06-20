@@ -184,9 +184,6 @@ async function getCurrentWeather(city) {
 }
 
 
-
-
-
 /* ==========================================
    FETCH FORECAST
 ========================================== */
@@ -203,6 +200,52 @@ async function getForecast(city) {
 
   return response.json();
 }
+
+
+/* ==========================================
+   DISPLAY CURRENT WEATHER
+========================================== */
+
+function displayWeather(data) {
+
+  weatherCard.classList.remove("hidden");
+
+  cityName.textContent = data.name;
+
+  currentDate.textContent =
+    getFormattedDate();
+
+  currentTempC = data.main.temp;
+
+  temperature.textContent =
+    `${data.main.temp} °C`;
+
+  humidity.textContent =
+    `${data.main.humidity}%`;
+
+  wind.textContent =
+    `${data.wind.speed} m/s`;
+
+  condition.textContent =
+    data.weather[0].main;
+
+  weatherDescription.textContent =
+    data.weather[0].description;
+
+  weatherIcon.src =
+    `https://openweathermap.org/img/wn/${data.weather[0].icon}@4x.png`;
+
+  updateBackground(
+    data.weather[0].main
+  );
+
+  if (data.main.temp > 40) {
+    showAlert(
+      "🔥 Extreme Heat Alert! Temperature above 40°C"
+    );
+  }
+}
+
 
 
 /* ==========================================
