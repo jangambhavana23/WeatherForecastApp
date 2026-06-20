@@ -200,6 +200,18 @@ button:active {
     font-weight: 600;
 }
 
+/* ====================================
+   WEATHER ICON
+==================================== */
+
+#weatherIcon {
+    width: 140px;
+    height: 140px;
+    animation: floatIcon 3s ease-in-out infinite;
+}
+
+
+
 
 @keyframes floatIcon {
 
