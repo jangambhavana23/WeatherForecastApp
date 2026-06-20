@@ -166,6 +166,25 @@ function updateBackground(weatherType) {
   }
 }
 
+/* ==========================================
+   FETCH CURRENT WEATHER
+========================================== */
+
+async function getCurrentWeather(city) {
+
+  const response = await fetch(
+    `${CURRENT_WEATHER_URL}?q=${city}&appid=${API_KEY}&units=metric`
+  );
+
+  if (!response.ok) {
+    throw new Error("City not found");
+  }
+
+  return response.json();
+}
+
+
+
 
 
 /* ==========================================
